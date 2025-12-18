@@ -1,0 +1,20 @@
+FROM node:18-alpine
+
+# Install pnpm
+RUN corepack enable && corepack prepare pnpm@latest --activate
+
+WORKDIR /app
+ENV NODE_ENV=development
+# IMPORTANT: fix pnpm binary resolution
+RUN pnpm config set node-linker=hoisted
+COPY notification-service/package.json ./package.json
+COPY notification-service/pnpm-lock.yaml ./pnpm-lock.yaml
+
+RUN pnpm install --frozen-lockfile
+
+COPY notification-service ./
+
+# build before running dist/main.js
+RUN pnpm build
+
+CMD ["node", "dist/main.js"]

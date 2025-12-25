@@ -5,7 +5,6 @@
 This project is a **production-style distributed notification system** built with **NestJS and RabbitMQ**.  
 It demonstrates how modern backend systems handle **asynchronous communication**, **event-driven architecture**, and **reliable message delivery** for Email, SMS, and Push notifications.
 
-The system is intentionally **medium-sized** — not a toy project, not an enterprise monolith — making it ideal for showcasing **real-world RabbitMQ skills** on a resume or in interviews.
 
 ---
 
